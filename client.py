@@ -49,7 +49,12 @@ class Client:
             rec.start()
 
             while True:
-                msg = input()
+                try:
+                    msg = input()
+                except KeyboardInterrupt:
+                    self.client_socket.close()
+                    break
+                
                 if msg != '!q':
                     msg = f"{self.username}: {msg}"
                     self.send(msg)
