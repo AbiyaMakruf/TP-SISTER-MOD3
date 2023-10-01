@@ -49,7 +49,7 @@ class Client:
             rec.start()
 
             while True:
-                msg = input(f"{self.username}: ")
+                msg = input()
                 if msg != '!q':
                     msg = f"{self.username}: {msg}"
                     self.send(msg)

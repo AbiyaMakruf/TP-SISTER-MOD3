@@ -59,7 +59,12 @@ class Server:
         print("Jumlah client saat ini: ", len(self.clients),end="\n\n")
 
 #Start server
-hostname = socket.gethostname()
-ipv4_address = socket.gethostbyname(hostname)
-server = Server(ipv4_address,5000)
+import socket
+my_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+my_socket.connect(("8.8.8.8", 80))
+ipv4_address = my_socket.getsockname()[0]
+my_socket.close()
+print('Your IP Address is',ipv4_address)
+
+server = Server(ipv4_address,3000)
 server.start()
