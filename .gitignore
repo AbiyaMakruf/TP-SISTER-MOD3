@@ -3,3 +3,5 @@
 clientA.py
 serverR.py
 clientR.py
+*.pem
+*.ppk
