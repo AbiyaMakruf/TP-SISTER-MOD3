@@ -17,7 +17,7 @@ class Server:
     def createServer(self):
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server.bind((self.host, self.port))
-        self.server.listen(10)
+        self.server.listen(1)
 
     def start(self):
         self.createServer()
@@ -61,13 +61,16 @@ class Server:
         print(addr, "terputus")
         print("Jumlah client saat ini: ", len(self.clients),end="\n\n")
 
-#Start server
-import socket
-my_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-my_socket.connect(("8.8.8.8", 80))
-ipv4_address = my_socket.getsockname()[0]
-my_socket.close()
-print('Your IP Address is',ipv4_address)
+# Get IP Address
+def getIP():
+    my_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    my_socket.connect(("8.8.8.8", 80))
+    ipv4_address = my_socket.getsockname()[0]
+    my_socket.close()
+    print('Your IP Address is',ipv4_address)
+    return ipv4_address
 
+# Main Program
+ipv4_address = getIP()
 server = Server(ipv4_address,3000)
 server.start()
