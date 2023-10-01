@@ -1,11 +1,12 @@
-# TP SISTER MOD 3
+# TP SISTER MOD 3 - Client TCP
 #ANGGOTA 1 : Muhammad Abiya Makruf - 1301213157 - MTA
 #ANGGOTA 2 : Galih Akbar Nugraha - 1301213060 - AFN
 
-# TCP Client
+#Import
 import socket
 import threading
 
+#Class Client
 class Client:
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -63,6 +64,7 @@ class Client:
 
         self.client_socket.close()
 
+#Main program
 if __name__ == '__main__':
     client = Client()
     client.join()
