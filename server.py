@@ -17,7 +17,7 @@ class Server:
     def createServer(self):
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server.bind((self.host, self.port))
-        self.server.listen(1)
+        self.server.listen(5)
 
     def start(self):
         self.createServer()
