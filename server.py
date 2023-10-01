@@ -33,13 +33,16 @@ class Server:
     def onReceiveMessage(self, conn,addr):
         try:
             while True:
-                message = conn.recv(1024).decode()
-                if not message:
+                try:
+                    message = conn.recv(1024).decode()
+                    if not message:
+                        self.deleteClient(conn,addr)
+                        break
+                    print(f"{datetime.datetime.now()} {message}")
+                    self.sendMessage(message, conn)
+                except:
                     self.deleteClient(conn,addr)
                     break
-                print(f"{datetime.datetime.now()} {message}")
-
-                self.sendMessage(message, conn)
         except Exception as e:
             print("An error occurred while receiving messages from a client:")
             print(e)

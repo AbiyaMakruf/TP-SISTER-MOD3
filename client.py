@@ -18,6 +18,7 @@ class Client:
                 continue
             break
 
+    @property
     def serverConfig(self):
         return (self.host, self.port)
 
@@ -25,7 +26,7 @@ class Client:
     def connect(self):
         while True:
             try:
-                self.client_socket.connect(self.serverConfig())
+                self.client_socket.connect(self.serverConfig)
                 print("Successfully connected to server")
                 return True
             except:
@@ -52,14 +53,15 @@ class Client:
                 try:
                     msg = input()
                 except KeyboardInterrupt:
-                    self.client_socket.close()
                     break
-                
+
                 if msg != '!q':
                     msg = f"{self.username}: {msg}"
                     self.send(msg)
                 else:
                     break
+
+        self.client_socket.close()
 
 if __name__ == '__main__':
     client = Client()
