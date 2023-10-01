@@ -1,2 +1,4 @@
 *.pdf
 *.docx
+clientA.py
+serverR.py
